@@ -25,6 +25,10 @@ function runEnter() {
 
     console.log(inputValue);
 
+    // Filter data based on inputValue
+    var filteredData = ufo_data.filter(ufo => ufo.datetime === inputValue);
+    console.log(filteredData);
+
 
 
 };
