@@ -37,7 +37,9 @@ function runEnter() {
         var row = tbody.append("tr");
 
         Object.defineProperties(ufoSighting).forEach(function([key, value]) {
+            console.log(key, value);
             var cell = row.append("td");
+            cell.text(value);
         });
     });
 
