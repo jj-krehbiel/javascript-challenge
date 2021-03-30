@@ -34,17 +34,23 @@ function runEnter() {
 
     // Loop through filteredData and append each object to the table
     filteredData.forEach(function(ufoSighting) {
+        tbody.html("");
         var row = tbody.append("tr");
 
-        Object.defineProperties(ufoSighting).forEach(function([key, value]) {
+        Object.entries(ufoSighting).forEach(function([key, value]) {
             console.log(key, value);
             var cell = row.append("td");
             cell.text(value);
         });
     });
-
-
-
-
-
 };
+
+ufo_data.forEach(function(ufoSighting) {
+    var row = tbody.append("tr");
+
+    Object.entries(ufoSighting).forEach(function([key, value]) {
+        console.log(key, value);
+        var cell = row.append("td");
+        cell.text(value);
+    });
+});
