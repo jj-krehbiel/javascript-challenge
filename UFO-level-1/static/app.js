@@ -7,6 +7,9 @@ var form = d3.select("#form")
 // Select the button
 var button = d3.select("#filter-btn");
 
+// Get a reference to the table body
+var tbody = d3.select("tbody");
+
 // Create event handlers
 form.on("submit", runEnter);
 button.on("click", runEnter);
@@ -28,6 +31,17 @@ function runEnter() {
     // Filter data based on inputValue
     var filteredData = ufo_data.filter(ufo => ufo.datetime === inputValue);
     console.log(filteredData);
+
+    // Loop through filteredData and append each object to the table
+    filteredData.forEach(function(ufoSighting) {
+        var row = tbody.append("tr");
+
+        Object.defineProperties(ufoSighting).forEach(function([key, value]) {
+            var cell = row.append("td");
+        });
+    });
+
+
 
 
 
