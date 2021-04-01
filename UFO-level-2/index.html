@@ -16,12 +16,12 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="index.html">UFO Sightings
-            <!-- <img class="nav-ufo" src="static/images/ufo.svg"> -->
+            <!-- <img class="nav-ufo" src="https://media.giphy.com/media/Uufh1aEq0Nm8nWZfGP/giphy.gif"> -->
           </a>
         </div>
       </div>
     </nav>
-    <div class="hero text-center">
+    <div class="hero text-center" style = "background-image:url(https://media.giphy.com/media/Uufh1aEq0Nm8nWZfGP/giphy.gif)" style = "background-position: center" id="gif">
       <h1>UFO Sightings</h1>
       <p>The Truth is Out There</p>
     </div>
@@ -37,7 +37,40 @@
                     <ul class="list-group" id="filters">
                       <li class="filter list-group-item">
                         <label for="date">Enter a Date</label>
-                        <input class="form-control" id="datetime" type="text" placeholder="1/11/2011">
+                        <input class="form-control" id="datetime" type="text" placeholder="1/1/2010">
+                      </li>
+                    </ul>
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a City</label>
+                        <input class="form-control" id="datetime" type="text">
+                      </li>
+                    </ul>
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="date">Enter a Two-Letter State Code</label>
+                        <input class="form-control" id="datetime" type="text">
+                      </li>
+                    </ul>
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="country">Select a Country</label>
+                        <select class="form-control" id="country" type="text">
+                          <option>USA</option>
+                          <option>Canada</option>
+                      </li>
+                    </ul>
+                    <ul class="list-group" id="filters">
+                      <li class="filter list-group-item">
+                        <label for="shape">Select a Shape</label>
+                        <select class="form-control" id="shape" type="text">
+                          <option>Circle</option>
+                          <option>Sphere</option>
+                          <option>Triangle</option>
+                          <option>Light</option>
+                          <option>Formation</option>
+                          <option>Fireball</option>
+                          <option>Other</option>
                       </li>
                     </ul>
                   </div>
