@@ -79,9 +79,9 @@ function runEnter() {
                 cell.text(value);
             });
         
-        // if (matchcount === 0) {
-        //     window.alert("There's no matching data :(")
-        // }
+        if (filteredData === []) {
+            window.alert("There's no matching data :(")
+        }
         });
     }
 };
