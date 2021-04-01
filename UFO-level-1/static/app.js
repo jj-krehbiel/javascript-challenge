@@ -2,7 +2,7 @@
 var ufo_data = data;
 
 // Select the datetime form
-var form = d3.select("#form")
+var form = d3.select("#datetime")
 
 // Select the button
 var button = d3.select("#filter-btn");
@@ -36,11 +36,8 @@ function runEnter() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
 
-    // Select the input element and get the raw HTML node
-    var inputElement = d3.select("#datetime");
-
     // Get the value property of the input element
-    var inputValue = inputElement.property("value");
+    var inputValue = form.property("value");
 
     console.log(inputValue);
 
