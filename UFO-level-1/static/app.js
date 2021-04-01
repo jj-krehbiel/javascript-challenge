@@ -14,6 +14,17 @@ var tbody = d3.select("tbody");
 form.on("submit", runEnter);
 button.on("click", runEnter);
 
+// Fill table with all the data
+ufo_data.forEach(function(ufoSighting) {
+    var row = tbody.append("tr");
+
+    Object.entries(ufoSighting).forEach(function([key, value]) {
+        console.log(key, value);
+        var cell = row.append("td");
+        cell.text(value);
+    });
+});
+
 // Complete the event handler function for the form
 function runEnter() {
 
@@ -28,29 +39,34 @@ function runEnter() {
 
     console.log(inputValue);
 
-    // Filter data based on inputValue
-    var filteredData = ufo_data.filter(ufo => ufo.datetime === inputValue);
-    console.log(filteredData);
-
-    // Loop through filteredData and append each object to the table
-    filteredData.forEach(function(ufoSighting) {
-        tbody.html("");
-        var row = tbody.append("tr");
-
-        Object.entries(ufoSighting).forEach(function([key, value]) {
-            console.log(key, value);
-            var cell = row.append("td");
-            cell.text(value);
+    if (inputValue === "") {
+        ufo_data.forEach(function(ufoSighting) {
+            var row = tbody.append("tr");
+        
+            Object.entries(ufoSighting).forEach(function([key, value]) {
+                console.log(key, value);
+                var cell = row.append("td");
+                cell.text(value);
+            });
         });
-    });
+    }
+    
+    else {
+        // Filter data based on inputValue
+        var filteredData = ufo_data.filter(ufo => ufo.datetime === inputValue.trim());
+        console.log(filteredData);
+
+        // Loop through filteredData and append each object to the table
+        filteredData.forEach(function(ufoSighting) {
+            tbody.html("");
+            var row = tbody.append("tr");
+
+            Object.entries(ufoSighting).forEach(function([key, value]) {
+                console.log(key, value);
+                var cell = row.append("td");
+                cell.text(value);
+            });
+        });
+    }
 };
 
-ufo_data.forEach(function(ufoSighting) {
-    var row = tbody.append("tr");
-
-    Object.entries(ufoSighting).forEach(function([key, value]) {
-        console.log(key, value);
-        var cell = row.append("td");
-        cell.text(value);
-    });
-});
