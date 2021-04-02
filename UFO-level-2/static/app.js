@@ -35,6 +35,16 @@ filteredData.forEach(function(ufoSighting) {
     });
 });
 
+// make a new function within this one that will run on change to trigger the dropdown menus
+// d3.selectAll("select").on("change", dropdown);
+// function dropdown() {
+//     var countryMenu = d3.selectAll("#country").node();
+//     var countryMenuID = countryMenu.id;
+//     var inputValue4 = countryMenu.value;
+//     console.log(inputValue4);
+//     console.log(countryMenuID);
+// }
+
 // Complete the event handler function for the form
 function runEnter() {
 
@@ -54,17 +64,17 @@ function runEnter() {
     inputValue3 = inputValue3.toLowerCase();
     console.log(inputValue3);
 
-    // make a new function within this one that will run on change to trigger the dropdown menus
-    d3.selectAll("select").on("change", dropdown);
-    function dropdown() {
-        var dropdownMenu1 = d3.selectAll("#country").node();
-        var countryMenu = dropdownMenu1.id;
-        var inputValue4 = countryMenu.value;
-        console.log(inputValue4);
-    }
+    var countryMenu = d3.selectAll("#country").node();
+    var countryMenuID = countryMenu.id;
+    var inputValue4 = countryMenu.value;
+    console.log(inputValue4);
+    console.log(countryMenuID);
 
-    // var inputValue5 = shapeForm.property("value");
-    // console.log(inputValue5);
+    var shapeMenu = d3.selectAll("#shape").node();
+    var shapeMenuID = shapeMenu.id;
+    var inputValue5 = shapeMenu.value;
+    console.log(inputValue5);
+    console.log(shapeMenuID);
 
     // var filteredData = ufo_data
     if (inputValue1) {
@@ -81,6 +91,10 @@ function runEnter() {
 
     if (inputValue4) {
         filteredData = filteredData.filter(sightings => sightings.country === inputValue4.trim())
+    }
+
+    if (inputValue5) {
+        filteredData = filteredData.filter(sightings => sightings.shape === inputValue5.trim())
     }
 
     tbody.html("");
