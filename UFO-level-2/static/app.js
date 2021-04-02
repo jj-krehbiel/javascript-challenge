@@ -29,7 +29,7 @@ filteredData.forEach(function(ufoSighting) {
     var row = tbody.append("tr");
 
     Object.entries(ufoSighting).forEach(function([key, value]) {
-        console.log(key, value);
+        // console.log(key, value);
         var cell = row.append("td");
         cell.text(value);
     });
@@ -38,15 +38,13 @@ filteredData.forEach(function(ufoSighting) {
 // Complete the event handler function for the form
 function runEnter() {
 
-    filteredData = []
-
     // Prevent the page from refreshing
     d3.event.preventDefault();
-
+    var filteredData = ufo_data;
     // Get the value properties of the input elements
     var inputValue1 = dateForm.property("value");
     inputValue1 = inputValue1.toLowerCase();
-    console.log(inputValue1);
+    console.log("dateForm", inputValue1);
 
     var inputValue2 = cityForm.property("value");
     inputValue2 = inputValue2.toLowerCase();
@@ -56,13 +54,14 @@ function runEnter() {
     inputValue3 = inputValue3.toLowerCase();
     console.log(inputValue3);
 
-    if (countryForm === "USA") {
-        var inputValue4 = "us"
+    // make a new function within this one that will run on change to trigger the dropdown menus
+    d3.selectAll("select").on("change", dropdown);
+    function dropdown() {
+        var dropdownMenu1 = d3.selectAll("#country").node();
+        var countryMenu = dropdownMenu1.id;
+        var inputValue4 = countryMenu.value;
+        console.log(inputValue4);
     }
-    if (countryForm === "Canada") {
-        var inputValue4 = "ca"
-    }
-    console.log(inputValue4);
 
     // var inputValue5 = shapeForm.property("value");
     // console.log(inputValue5);
@@ -84,9 +83,10 @@ function runEnter() {
         filteredData = filteredData.filter(sightings => sightings.country === inputValue4.trim())
     }
 
+    tbody.html("");
     filteredData.forEach(function(ufoSighting) {
         var row = tbody.append("tr");
-
+        
         Object.entries(ufoSighting).forEach(function([key, value]) {
             console.log(key, value);
             var cell = row.append("td");
@@ -94,34 +94,3 @@ function runEnter() {
             });
         });
     }
-
-    // // else if (inputValue !== inputValue.trim()) {
-    // //     var popup = window.alert("There's no matching data :(")
-    // //     popup = true
-    // // }
-    
-    // else {
-    //     // Filter data based on inputValue
-    //     var filteredData = ufo_data.filter(ufo => ufo.datetime === inputValue.trim());
-    //     console.log(filteredData);
-
-    //     // Loop through filteredData and append each object to the table
-    //     filteredData.forEach(function(ufoSighting) {
-    //         matchcount += matchcount;
-    //         console.log(matchcount);
-    //         tbody.html("");
-    //         var row = tbody.append("tr");
-
-    //         Object.entries(ufoSighting).forEach(function([key, value]) {
-    //             console.log(key, value);
-    //             var cell = row.append("td");
-    //             cell.text(value);
-    //         });
-        
-    //     if (filteredData === []) {
-    //         window.alert("There's no matching data :(")
-    //     }
-    //     });
-    // }
-// };
-
