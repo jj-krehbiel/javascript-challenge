@@ -51,6 +51,8 @@ function runEnter() {
     // Prevent the page from refreshing
     d3.event.preventDefault();
     var filteredData = ufo_data;
+    var matchcount = 0;
+    console.log(matchcount);
     // Get the value properties of the input elements
     var inputValue1 = dateForm.property("value");
     inputValue1 = inputValue1.toLowerCase();
@@ -96,10 +98,13 @@ function runEnter() {
     if (inputValue5) {
         filteredData = filteredData.filter(sightings => sightings.shape === inputValue5.trim())
     }
+    
 
     tbody.html("");
     filteredData.forEach(function(ufoSighting) {
         var row = tbody.append("tr");
+        matchcount += 1;
+        console.log(matchcount);
         
         Object.entries(ufoSighting).forEach(function([key, value]) {
             console.log(key, value);
@@ -107,4 +112,7 @@ function runEnter() {
             cell.text(value);
             });
         });
+        if (matchcount === 0) {
+            window.alert("There's no matching data :(")
+        }
     }
