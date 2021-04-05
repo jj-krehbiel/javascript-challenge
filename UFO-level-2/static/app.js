@@ -16,11 +16,7 @@ var tbody = d3.select("tbody");
 
 var matchcount = 0
 
-// Create an alert box for no matching data
-// var popup = window.alert("There's no matching data :(")
-
 // Create event handlers
-// form.on("submit", runEnter);
 button.on("click", runEnter);
 
 // Fill table with all the data
@@ -34,16 +30,6 @@ filteredData.forEach(function(ufoSighting) {
         cell.text(value);
     });
 });
-
-// make a new function within this one that will run on change to trigger the dropdown menus
-// d3.selectAll("select").on("change", dropdown);
-// function dropdown() {
-//     var countryMenu = d3.selectAll("#country").node();
-//     var countryMenuID = countryMenu.id;
-//     var inputValue4 = countryMenu.value;
-//     console.log(inputValue4);
-//     console.log(countryMenuID);
-// }
 
 // Complete the event handler function for the form
 function runEnter() {

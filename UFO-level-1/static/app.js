@@ -10,11 +10,6 @@ var button = d3.select("#filter-btn");
 // Get a reference to the table body
 var tbody = d3.select("tbody");
 
-
-
-// Create an alert box for no matching data
-// var popup = window.alert("There's no matching data :(")
-
 // Create event handlers
 form.on("submit", runEnter);
 button.on("click", runEnter);
@@ -53,11 +48,6 @@ function runEnter() {
             });
         });
     }
-
-    // else if (inputValue !== inputValue.trim()) {
-    //     var popup = window.alert("There's no matching data :(")
-    //     popup = true
-    // }
     
     else {
         // Filter data based on inputValue
@@ -83,9 +73,6 @@ function runEnter() {
         
        
         });
-    // if (matchcount === 0) {
-    //     window.alert("There's no matching data :(")
-    // }
     }
     
 };
